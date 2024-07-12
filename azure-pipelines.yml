@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'Azure-Connection-SC'
+        backendAzureRmResourceGroupName: 'shoppingclient'
+        backendAzureRmStorageAccountName: 'shoppingclient553'
+        backendAzureRmContainerName: 'azdiagextnresults'
+        backendAzureRmKey: 'terraform.tfstate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/main.tf'
+        commandOptions: '-lock=false'
