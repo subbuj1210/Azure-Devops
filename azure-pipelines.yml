@@ -21,3 +21,10 @@ steps:
         backendAzureRmKey: 'terraform.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
         commandOptions: '-lock=false'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'Azure-Connection-SC'
+        workingDirectory: '$(System.DefaultWorkingDirectory)main.tf'
+        commandOptions: '-lock=false'
