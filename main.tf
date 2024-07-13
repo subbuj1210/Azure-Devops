@@ -17,11 +17,11 @@ terraform {
     }
   }
 # Terraform State Storage to Azure Storage Container
-  backend "local" {
-    #resource_group_name   = "shoppingclient"
-    #storage_account_name  = "shoppingclient553"
-    #container_name        = "akspractice"
-    #key                   = "terraform.tfstate"
+  backend "azurerm" {
+    resource_group_name   = "shoppingclient"
+    storage_account_name  = "shoppingclient553"
+    container_name        = "akspractice"
+    key                   = "terraform.tfstate"
   }
 }
 
