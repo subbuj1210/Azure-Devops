@@ -17,7 +17,7 @@ steps:
         backendServiceArm: 'Azure-Connection-SC'
         backendAzureRmResourceGroupName: 'shoppingclient'
         backendAzureRmStorageAccountName: 'shoppingclient553'
-        backendAzureRmContainerName: 'azdiagextnresults'
+        backendAzureRmContainerName: 'akspractice'
         backendAzureRmKey: 'terraform.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
         commandOptions: '-lock=false'
