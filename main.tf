@@ -22,7 +22,7 @@ module "app1-rg" {
        rg_name = "app1-rg3"
        rg_location = "westus"
 }
-module "app1-subnet" {
+module "app1-vnet" {
         source = "github.com/subbuj1210/Azure-Devops/modules/Vnet"
         web_subnet_name = "websubnet"
         rg_name = "app1-rg3"
