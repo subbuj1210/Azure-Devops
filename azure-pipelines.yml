@@ -10,7 +10,6 @@ pool:
   name: Default
 
 steps:
-
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
@@ -19,13 +18,9 @@ steps:
         backendAzureRmResourceGroupName: 'shoppingclient'
         backendAzureRmStorageAccountName: 'shoppingclient553'
         backendAzureRmContainerName: 'akspractice'
-        backendAzureRmKey: 'dev.tfstate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
-        commandOptions: '-lock=false'
+        backendAzureRmKey: 'uat.tfstate'
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
         command: 'apply'
         environmentServiceNameAzureRM: 'Azure-Connection-SC'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
-        commandOptions: '-lock=false'
