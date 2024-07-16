@@ -24,8 +24,8 @@ module "app1-rg" {
 }
 module "app1-vnet" {
         source = "git@github.com:subbuj1210/Practice-Devops.git"
-        rg_name = "app1-rg3"
-        rg_location = "westus"
+        rg_name = var.rg_name
+        rg_location = var.rg_location
         vnet_name = "app1-vnet"
         vnet_cidr = ["192.168.0.0/16"]
         web_subnet_name = "websubnet"
