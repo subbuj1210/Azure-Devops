@@ -41,7 +41,8 @@ module "app1-nsg" {
 
 // Example of passing provider configuration to the module
 
-  providers = {
-    azurerm = azurerm
+provider "azurerm" {
+  features {}
+}
 }
 
