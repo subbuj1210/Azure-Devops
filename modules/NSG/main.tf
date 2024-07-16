@@ -33,6 +33,6 @@ resource "azurerm_network_security_rule" "web_nsg_rule_inbound" {
 # Resource-3: Associate NSG and Subnet
 resource "azurerm_subnet_network_security_group_association" "web_subnet_nsg_associate" {
   depends_on = [ azurerm_network_security_rule.web_nsg_rule_inbound] # Every NSG Rule Association will disassociate NSG from Subnet and Associate it, so we associate it only after NSG is completely created - Azure Provider Bug https://github.com/terraform-providers/terraform-provider-azurerm/issues/354
-  subnet_id = module.app1-vnet.subnet_id
+ # subnet_id = module.app1-vnet.subnet_id
   network_security_group_id = azurerm_network_security_group.web_subnet_nsg.id
 }
