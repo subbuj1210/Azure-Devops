@@ -37,12 +37,5 @@ module "app1-nsg" {
         rg_name = "app1-rg3"
         rg_location = "westus"
         nsg_name = "web-nsg"
-        subnet_id = module.app1-vnet.subnet_id
-
-// Example of passing provider configuration to the module
-
-provider "azurerm" {
-  features {}
-}
 }
 
