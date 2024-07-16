@@ -32,5 +32,10 @@ module "app1-subnet" {
         web_subnet_address = ["192.168.0.0/24"]
 
 }
-
+module "app1-subnet" {
+        source = "github.com/subbuj1210/Azure-Devops/modules/NSG"
+        rg_name = "app1-rg3"
+        rg_location = "westus"
+        nsg_name = "web-nsg"
+}
 
