@@ -17,11 +17,11 @@ terraform {
 provider "azurerm" {
   features {}
 }
-#module "app1-rg" {
- #       source = "git@github.com:subbuj1210/Practice-Devops.git"
- #       rg_name = "app1-rg3"
- #       rg_location = "westus"
-#}
+module "app1-rg" {
+       source = "git@github.com:subbuj1210/Practice-Devops.git"
+       rg_name = "app1-rg3"
+       rg_location = "westus"
+}
 module "app1-vnet" {
         source = "git@github.com:subbuj1210/Practice-Devops.git"
         rg_name = "app1-rg3"
