@@ -22,4 +22,15 @@ module "app1-rg" {
        rg_name = "app1-rg3"
        rg_location = "westus"
 }
+module "app1-subnet" {
+        source = "github.com/subbuj1210/Azure-Devops/modules/vnet"
+        web_subnet_name = "websubnet"
+        rg_name = "app1-rg3"
+        rg_location = "westus"
+        vnet_cidr = ["192.168.0.0/16"]
+        vnet_name = "app1-vnet"
+        web_subnet_address = ["192.168.0.0/24"]
+
+}
+
 
