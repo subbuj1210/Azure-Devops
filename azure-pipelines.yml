@@ -26,5 +26,5 @@ steps:
         provider: 'azurerm'
         command: 'apply'
         environmentServiceNameAzureRM: 'Azure-Connection-SC'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
-        commandOptions: '-lock=false'   
+        # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
+        # commandOptions: '-lock=false'   
