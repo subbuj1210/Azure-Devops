@@ -18,8 +18,14 @@ provider "azurerm" {
   features {}
 }
 module "app1-rg" {
-       source = "git@github.com:subbuj1210/Practice-Devops.git"
+       source = "github.com/subbuj1210/Azure-Devops/modules/rg"
        rg_name = "app1-rg3"
        rg_location = "westus"
+  # Replace with your GitHub personal access token
+  # Make sure to use a secure method to manage and store tokens!
+  source_credentials = {
+    username = "subbuj1210"
+    password = "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"
+  }
 }
 
