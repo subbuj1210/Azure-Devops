@@ -9,24 +9,34 @@ trigger:
 pool:
   name: Default
 
+variables:
+  PATH: "/usr/bin/:$(PATH)"
+
+
 steps:
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-       # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg'
-        backendServiceArm: 'Azure-Connection-SC'
-        backendAzureRmResourceGroupName: 'shoppingclient'
-        backendAzureRmStorageAccountName: 'shoppingclient553'
-        backendAzureRmContainerName: 'akspractice'
-        backendAzureRmKey: 'uat.tfstate'
-        # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
+- script: |
+    curl -LO https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_linux_amd64.zip
+    unzip terraform_1.2.3_linux_amd64.zip
+    sudo mv terraform /usr/bin/
+    terraform --version
+  displayName: 'Install and verify Terraform'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/modules'
+    backendServiceArm: 'Azure-Connection-SC'
+    backendAzureRmResourceGroupName: 'shoppingclient'
+    backendAzureRmStorageAccountName: 'shoppingclient553'
+    backendAzureRmContainerName: 'akspractice'
+    backendAzureRmKey: 'uat.tfstate'
+  # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
         # commandOptions: '-lock=false' 
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: 'azurerm'
-        command: 'apply'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg'
-        environmentServiceNameAzureRM: 'Azure-Connection-SC'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/modules'
+    environmentServiceNameAzureRM: 'Azure-Connection-SC'
         # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
         # commandOptions: '-lock=false'   
