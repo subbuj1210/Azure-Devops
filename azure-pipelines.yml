@@ -19,8 +19,12 @@ steps:
         backendAzureRmStorageAccountName: 'shoppingclient553'
         backendAzureRmContainerName: 'akspractice'
         backendAzureRmKey: 'uat.tfstate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
+        commandOptions: '-lock=false' 
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
         command: 'apply'
         environmentServiceNameAzureRM: 'Azure-Connection-SC'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
+        commandOptions: '-lock=false'   
