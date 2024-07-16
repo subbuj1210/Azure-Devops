@@ -9,22 +9,13 @@ trigger:
 pool:
   name: Default
 
-variables:
-  PATH: "/usr/bin/:$(PATH)"
-
-
 steps:
-- script: |
-    curl -LO https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_linux_amd64.zip
-    unzip terraform_1.2.3_linux_amd64.zip
-    sudo mv terraform /usr/bin/
-    terraform --version
-  displayName: 'Install and verify Terraform'
+
 - task: TerraformTaskV4@4
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/modules'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     backendServiceArm: 'Azure-Connection-SC'
     backendAzureRmResourceGroupName: 'shoppingclient'
     backendAzureRmStorageAccountName: 'shoppingclient553'
@@ -36,7 +27,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/modules'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     environmentServiceNameAzureRM: 'Azure-Connection-SC'
         # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg/'
         # commandOptions: '-lock=false'   
