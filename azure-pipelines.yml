@@ -14,7 +14,7 @@ steps:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg'
+       # workingDirectory: '$(System.DefaultWorkingDirectory)/modules/rg'
         backendServiceArm: 'Azure-Connection-SC'
         backendAzureRmResourceGroupName: 'shoppingclient'
         backendAzureRmStorageAccountName: 'shoppingclient553'
